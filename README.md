@@ -1,8 +1,30 @@
-## English Summary
+## 15 秒判断：这套笔记值不值得你收藏
+
+**收藏它，如果你是 ——**
+- 正在给边缘设备做低功耗选型、要在 Speck / Akida / Loihi 之间决定「进不进 BOM」的嵌入式工程师
+- 手上有一批 7×24 定时轮询任务，想给 API 账单或功耗预算找出可下降空间的后端 / 平台工程师
+- 需要给「要不要上事件相机或神经形态芯片」写一份含失效条件的评估报告的算法负责人或技术负责人
+
+**直接划走，如果你要的是 ——**
+- 可直接 pip install 跑起来的代码：本仓是纯研究笔记，没有 SDK、没有模型权重、没有示例工程
+- 一条「该买哪颗芯片」的采购结论：这里给的是条件边界与「不该用」清单，不是供应商推荐
+- 稳定维护与按期更新的项目：更新不定期，事实锚定在 2026-10 的交叉验证，之后可能过时
+
+**三条最反直觉的发现 ——**
+1. 「省 100 倍」不是芯片属性，是三个条件的乘积：三条件各打九折还剩约七成，但任一条件完全缺失，乘积塌到接近 1（10×-1000× 仅在活动稀疏 + 事件驱动输入 + 容忍近似同时成立时出现 [二手]；三条件各打九折总效率剩余约七成 [推算]）
+2. 神经元规模更大的芯片并不「更强」，只是服务另一种任务：Speck 328k 神经元空闲 <1mW，Loihi 2 每芯片 100 万神经元 / 1.2 亿突触却要到芯片级 <1W，两者功耗差约三个数量级（<1mW [二手]；<1W [二手]；差三个数量级 [推算]）
+3. 类脑计算救不了大模型的能耗：LLM 推理的瓶颈是内存带宽，权重必须全量流式通过计算单元，稀疏 + 存内计算的省能逻辑在这个数据流形态下施展不开（密集 CNN 推理与 LLM 推理为原话级警告 [二手]；以当前画像八条「不该用」至少命中五条 [推算]）
+
+---
+
+<details>
+<summary><b>English Summary</b>（英文读者展开）</summary>
 
 These are ten working notes on a single question: whether the frame-plus-global-clock paradigm still holds when intelligence has to stay on around the clock under milliwatt budgets. They cover first-principles energy accounting for always-on systems, spike-based encoding and its three training routes, event cameras as a different input primitive, the 2026 hardware landscape, what actually sits behind the advertised efficiency multipliers, the state of the software stack, two-tier hybrid architectures, and a closing list of cases where this approach should not be used at all. Every claim is stated with a boundary number, a source grade, and the specific evidence that would kill it. They are written for engineers and researchers evaluating this field, particularly those deciding whether to adopt neuromorphic silicon or to borrow only its design discipline.
 
 > 中文简介见下 ↓
+
+</details>
 
 # 神经形态计算与事件驱动传感 · 十件研究笔记
 
@@ -87,3 +109,16 @@ MIT License. 作者署名 chenhz01。
 3. 若端侧低功耗 NPU 持续改进到小模型常开也够省，混合架构里的神经形态这一层可被整体跳过。
 
 这套笔记的每篇都有完整两层费曼拆解，方法见 [FEYNMAN.md](./FEYNMAN.md)。
+
+## 可引用卡片：想转给同事，直接复制这几句
+
+> 「省 100 倍」不是芯片属性——三个条件各打九折还剩约七成，缺任何一条就塌回接近 1。
+> —— 出自《能效真相》，[查看原文](./notes/06-efficiency-truth.md)
+
+> Speck 空闲 <1mW 与 Loihi 2 芯片级 <1W 差三个数量级，不是谁更强，是服务的任务不同。
+> —— 出自《2026 硬件版图》，[查看原文](./notes/05-hardware-map-2026.md)
+
+> LLM 推理的瓶颈是内存带宽，权重必须全量流过计算单元，类脑的省能逻辑施展不开。
+> —— 出自《反例与证伪》，[查看原文](./notes/10-falsification-when-not.md)
+
+每句都自带出处链接，可单独复制转发。
