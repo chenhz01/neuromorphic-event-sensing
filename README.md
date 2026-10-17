@@ -1,3 +1,9 @@
+## English Summary
+
+These are ten working notes on a single question: whether the frame-plus-global-clock paradigm still holds when intelligence has to stay on around the clock under milliwatt budgets. They cover first-principles energy accounting for always-on systems, spike-based encoding and its three training routes, event cameras as a different input primitive, the 2026 hardware landscape, what actually sits behind the advertised efficiency multipliers, the state of the software stack, two-tier hybrid architectures, and a closing list of cases where this approach should not be used at all. Every claim is stated with a boundary number, a source grade, and the specific evidence that would kill it. They are written for engineers and researchers evaluating this field, particularly those deciding whether to adopt neuromorphic silicon or to borrow only its design discipline.
+
+> 中文简介见下 ↓
+
 # 神经形态计算与事件驱动传感 · 十件研究笔记
 
 这是对一个具体问题做了长期跟踪后留下的十件笔记：当智能必须 7×24 小时在线、且预算以毫瓦和分币计时，「帧 + 全局时钟」这套默认范式在物理上还成不成立。笔记从头到尾只做一件事——把架构层面的能耗主张拆成可核算的条件，并给每条主张配上能杀死它的证据。
@@ -51,3 +57,33 @@
 ## 许可
 
 MIT License. 作者署名 chenhz01。
+
+## 同系列笔记（五个领域）
+
+| 领域 | 仓库 | 一句话 |
+|---|---|---|
+| 神经形态计算与事件驱动传感 | [neuromorphic-event-sensing](https://github.com/chenhz01/neuromorphic-event-sensing) | 永远在线的智能为什么必须抛弃「帧」与全局时钟，以及省 100 倍的前提条件 |
+| AI 老药新用与计算重定位 | [ai-drug-repurposing](https://github.com/chenhz01/ai-drug-repurposing) | 用计算手段给已上市分子找新适应症，以及 10-30% 的前瞻重复率边界 |
+| 本地优先软件与 CRDT 同步 | [local-first-crdt](https://github.com/chenhz01/local-first-crdt) | 把数据主副本放回用户设备，冲突由数学保证收敛 |
+| 后量子密码迁移 | [post-quantum-migration](https://github.com/chenhz01/post-quantum-migration) | 从 Shor 的威胁模型走到一人公司能执行的换算法顺序 |
+| 软体与折纸机器人 | [soft-origami-robotics](https://github.com/chenhz01/soft-origami-robotics) | 柔性结构能否把安全、顺应与几何编程做成工程能力 |
+
+五套笔记各自独立，互不依赖，可任选入口进入。
+
+## 费曼速览：60 秒判断这个领域值不值得你花时间
+
+**一句话**：像门铃——只有有人按的时候才响，不像摄像头那样每秒拍几十张照片等着你去翻；哪里不像：门铃只会告诉你「有变化了」，说不出是谁、穿什么颜色，事件相机同样只报亮度变化、不报绝对亮度。
+
+**三个数**：
+
+1. SynSense Speck 空闲功耗 <1mW [二手]
+2. BrainChip Akida 典型功耗 30mW [二手]
+3. 10×-1000× 的能效提升仅在「活动稀疏 + 事件驱动输入 + 容忍近似计算」三条件同时成立时出现 [二手] + [推算]
+
+**不成立的三个条件**：
+
+1. 若你的任务是密集静态推理（大批量图片分类）或 LLM 推理（瓶颈在内存带宽），本套笔记里没有一颗芯片是正确答案，能效优势归零。
+2. 若出现接近 CUDA 成熟度的跨硬件软件生态与中间层，「采用成本以周计入门、以季度计量产」的现实判断失效。
+3. 若端侧低功耗 NPU 持续改进到小模型常开也够省，混合架构里的神经形态这一层可被整体跳过。
+
+这套笔记的每篇都有完整两层费曼拆解，方法见 [FEYNMAN.md](./FEYNMAN.md)。
