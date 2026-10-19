@@ -1,3 +1,5 @@
+<p align="center"><img src="assets/social-preview.png" width="100%" alt="神经形态计算与事件驱动传感十讲" /></p>
+
 ## 15 秒判断：这套笔记值不值得你收藏
 
 **收藏它，如果你是 ——**
